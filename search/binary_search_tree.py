@@ -23,8 +23,18 @@ class BinarySearchTree:
             if cur.left:
                 storage.append(cur.left)
 
+    # same as depth first except we pop from the front to make storage a queue
+    # instead of a stack
     def breadth_first_for_each(self, cb):
-        pass
+        storage = []
+        storage.append(self)
+        while len(storage):
+            cur = storage.pop(0)  # pop from the front
+            cb(cur.value)
+            if cur.left:
+                storage.append(cur.left)
+            if cur.right:
+                storage.append(cur.right)
 
     def insert(self, value):
         new_tree = BinarySearchTree(value)
