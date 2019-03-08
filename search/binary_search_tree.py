@@ -4,8 +4,24 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
+# set up storage as an array
+# DFS uses a stack
+# append first item of BST
+# while storage[0]
+# cb(self.value)
+# pop self from storage
+# if self.left append self.left to storage
+# if self.right append self.right to storage
     def depth_first_for_each(self, cb):
-        pass
+        storage = []
+        storage.append(self)
+        while len(storage):
+            cur = storage.pop()
+            cb(cur.value)
+            if cur.right:
+                storage.append(cur.right)
+            if cur.left:
+                storage.append(cur.left)
 
     def breadth_first_for_each(self, cb):
         pass
